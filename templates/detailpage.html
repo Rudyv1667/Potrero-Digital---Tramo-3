@@ -1,0 +1,45 @@
+{% extends "layout.html" %}  <!-- declaro de donde traigo la plantilla -->
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Descripción del curso</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/1c647da0f0.js">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <section class="about">
+      <div class="row">
+        <div class="content">
+          <div class="backbtn">
+            <button type="button" class="btn btn-info btn-small-left" id="btnatras">Atrás</button>
+          </div>
+          <h3></h3>
+          <h3>Descripción del Curso</h3>
+          <hr>
+          <div class="descripcion-container"></div>
+          <div class="box-container">
+            <div class="box">
+              <i class="fa-solid fa-video"></i>
+              <p class="cursomaterias"></p>
+            </div>
+            <div class="box">
+              <i class="fa-solid fa-scroll"></i>
+              <p class="cursoduracion"></p>
+            </div>
+          </div>
+          <div class="more-btn" id="compra" type="">
+            <button class="inline-option-btn" type="button">Comprar curso</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="{{ url_for('static', filename='js/maincursos.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</html>
+
+{% endblock%}

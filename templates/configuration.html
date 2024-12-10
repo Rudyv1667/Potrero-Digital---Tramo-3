@@ -1,0 +1,54 @@
+{% extends "layout.html" %}  <!-- declaro de donde traigo la plantilla -->
+
+{% block content %}
+
+<body>
+ 
+ <!-- Bloques de cursos -->
+
+ <section class="courses">
+ 
+    <h1 class="heading">Configuración del Administrador</h1>
+ 
+    <div class="box-container">
+ 
+       <div class="box">
+         <a href="{{ url_for ('post')}}">
+          <div class="thumb">
+             <img src="{{url_for('static', filename='img/create.jpg')}}" alt="">
+          </div>
+          <h3 class="title">Crear Nuevo Curso</h3>
+         </a> 
+       </div>
+ 
+       <div class="box">
+         <a href="{{ url_for ('delete')}}">
+          <div class="thumb">
+             <img src="{{url_for('static', filename='img/delete.jpg')}}" alt="">
+          </div>
+          <h3 class="title">Borrar un Curso</h3>
+         </a>
+       </div>
+ 
+       <div class="box">
+         <a href="{{ url_for ('put')}}">
+          <div class="thumb">
+             <img src="{{url_for('static', filename='img/modify.jpg')}}" alt="">
+          </div>
+          <h3 class="title">Editar un Curso</h3>
+         </a>
+       </div>
+ 
+    </div>
+ 
+ </section>
+ 
+ <!-- Scripts  -->
+
+ <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+ 
+    
+ </body>
+ </html>
+
+{% endblock%}

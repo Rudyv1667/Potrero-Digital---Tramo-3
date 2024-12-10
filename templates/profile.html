@@ -1,0 +1,74 @@
+{% extends "layout.html" %}  <!-- declaro de donde traigo la plantilla -->
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>profile</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+   <section class="user-profile">
+
+      <h1 class="heading">Su perfil</h1>
+
+      <div class="info">
+
+         <div class="user">
+            <img src="{{url_for('static', filename='img/pfp.png')}}" alt="">
+            <h3>Villarroel Ruiz, Rudy</h3>
+            <p>Administrador</p>
+            <a href="{{ url_for ('update')}}" class="inline-btn">Actualizar perfil</a>
+         </div>
+      
+         <div class="box-container">
+      
+            <div class="box">
+               <div class="flex">
+                  <i class="fas fa-bookmark"></i>
+                  <div>
+                     <h3 style="color: var(--black);">Inscripción a materias</h3>
+                  </div>
+               </div>
+               <a href="#" class="inline-btn">Ver materias</a>
+            </div>
+      
+            <div class="box">
+               <div class="flex">
+                  <i class="fas fa-heart"></i>
+                  <div>
+                     <h3 style="color: var(--black);">Calificaciones</h3>
+                  </div>
+               </div>
+               <a href="#" class="inline-btn">Ver calificaciones</a>
+            </div>
+      
+            <div class="box">
+               <div class="flex">
+                  <i class="fas fa-comment"></i>
+                  <div>
+                     <h3 style="color: var(--black);">Mensajes Recibidos</h3>
+                  </div>
+               </div>
+               <a href="#" class="inline-btn">Ver Mensajes</a>
+            </div>
+      
+         </div>
+      </div>
+
+   </section>
+   <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+</html>
+
+{% endblock%}

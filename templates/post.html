@@ -1,0 +1,153 @@
+
+{% extends "layout.html" %}  <!-- declaro de donde traigo la plantilla -->
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Cursos</title>
+  </head>
+  <body>
+    <div class="box-container">
+      <div class="backbtn">
+        <a href="{{ url_for ('configuracion')}}"><button type="button" class="btn btn-info btn-small-left" id="btnatras">Atrás</button></a>
+      </div>
+      <div class="container">
+        <div class="card-deck-pdp" id="card-deck"></div>
+        <form id="form-curso">
+          <div class="form-group">
+            <label for="nombrecurso">Nombre del curso:</label>
+            <input type="text" class="form-control" id="titulo" required>
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Descripcion del curso:</label>
+            <input type="text" class="form-control" id="descripcion" required>
+          </div>
+          <div class="form-group">
+            <label for="duracion">Duración del curso (Años):</label>
+            <input type="number" class="form-control" id="duracion" required>
+          </div>
+          <div class="form-group">
+            <label for="valor">Cantidad de materias</label>
+            <input type="number" class="form-control" id="materias" required>
+          </div>
+          <div class="form-group">
+            <label for="imagen">Imagen del curso:</label>
+            <input type="file" class="form-control" id="imagen" required>
+          </div>
+          <div class="form-group">
+            <label for="portada">Portada del curso:</label>
+            <input type="file" class="form-control" id="portada" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Agregar curso</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Función que obtiene los datos de la API y crea las cards
+      function obtenerDatos() {
+        fetch('https://pd-api-firebase-default-rtdb.firebaseio.com/Cursos.json')
+          .then(response => response.json())
+          .then(data => {
+            const cardDeck = document.getElementById('card-deck');
+            for (let key in data) {
+              const objeto = data[key];
+
+              const card = document.createElement('div');
+              card.classList.add('box-courses');
+
+              const imagen = document.createElement('img');
+              imagen.classList.add('card-img-top');
+              imagen.setAttribute("id", "cursoimagen")
+              imagen.src = objeto.Pic;
+
+              const cardBody = document.createElement('div');
+              cardBody.classList.add('card-body');
+
+              const titulo = document.createElement('h5');
+              titulo.classList.add('card-title');
+              titulo.textContent = objeto.Nombre;
+
+              const descripcion = document.createElement('p');
+              descripcion.classList.add('card-text');
+              descripcion.textContent = objeto.Descripcion;
+
+              const duracion = document.createElement('p');
+              duracion.classList.add('card-text');
+              duracion.textContent = 'Duración: ' + objeto.Duracion + ' años';
+
+              const materias = document.createElement('p');
+              materias.classList.add('card-text');
+              materias.textContent = 'Cantidad de Materias: ' + objeto.Materias;
+
+              cardBody.appendChild(titulo);
+              cardBody.appendChild(descripcion);
+              cardBody.appendChild(duracion);
+              cardBody.appendChild(materias);
+
+              card.appendChild(imagen);
+              card.appendChild(cardBody);
+
+              cardDeck.appendChild(card);
+            }
+          });
+      }
+
+      // Ejecutar la función obtenerDatos al cargar la página
+      obtenerDatos();
+
+      // Agregar un evento al formulario para enviar los datos a la API
+      const formCurso = document.getElementById('form-curso');
+      formCurso.addEventListener('submit', (event) => {
+        event.preventDefault(); // Evita que la página se recargue al enviar el formulario
+
+        // Obtener la imagen seleccionada
+        const imagenInput = document.getElementById('imagen');
+        const imagenFile = imagenInput.files[0];
+        const reader = new FileReader();
+
+        const portadaInput = document.getElementById('portada');
+        const portadaFile = portadaInput.files[0];
+        const readerPortada = new FileReader();
+
+        // Convertir la imagen a base64
+        reader.onload = (event) => {
+        const imagenBase64 = event.target.result;
+        const portadaBase64 = event.target.result;
+
+        // Obtener los valores del formulario
+        const nombreCurso = document.getElementById('titulo').value;
+        const descripcion = document.getElementById('descripcion').value;
+        const duracion = document.getElementById('duracion').value;
+        const materias = document.getElementById('materias').value;
+
+        // Enviar los datos a la API
+        fetch('https://pd-api-firebase-default-rtdb.firebaseio.com/Cursos.json', {
+          method: 'POST',
+          body: JSON.stringify({
+            Nombre : nombreCurso,
+            Descripcion : descripcion,
+            Duracion : duracion,
+            Materias : materias,
+            Pic : imagenBase64,
+            Portada : portadaBase64
+          })
+        })
+        .then(response => {
+          alert('El curso ha sido agregado con éxito');
+          obtenerDatos(); // Actualizar la lista de cursos
+        })
+        .catch(error => console.error(error));
+      };
+
+      reader.readAsDataURL(imagenFile);
+      readerPortada.readAsDataURL(portadaFile);
+      });
+    </script>
+  </body>
+</html>
+
+{% endblock%}

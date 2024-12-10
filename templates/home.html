@@ -1,0 +1,90 @@
+{% extends "layout.html" %}  <!-- declaro de donde traigo la plantilla -->
+
+{% block content %}
+
+<body>
+ 
+ <section class="home-grid">
+
+<!-- Pestañas superiores -->
+ 
+    <div class="box-container">
+  
+       <div class="box">
+          <h3 class="title">Aulas</h3>
+          <div class="flex">
+             <a href="#" class="header-tags"><img src="{{url_for('static', filename='img/germany.jpg')}}" class="header-images" alt="Alemán">Alemán</a>
+             <a href="#" class="header-tags"><img src="{{url_for('static', filename='img/OIG3.jpg')}}" class="header-images" alt="Inglés">Inglés</a>
+             <a href="#" class="header-tags"><img src="{{url_for('static', filename='img/france.jpg')}}" class="header-images" alt="Francés">Francés</a>
+             <a href="#" class="header-tags"><img src="{{url_for('static', filename='img/OIG1.jpg')}}" class="header-images" alt="Chino">Chino</a>
+             <a href="#" class="header-tags"><img src="{{url_for('static', filename='img/japan.jpg')}}" class="header-images" alt="Japonés">Japonés</a>
+             <a href="#" class="header-tags"><img src="{{url_for('static', filename='img/rusia.jpg')}}" class="header-images" alt="Ruso">Ruso</a>
+          </div>
+       </div>
+    </div>
+ 
+ </section>
+ 
+ <!-- Bloques de cursos -->
+
+ <section class="courses">
+ 
+    <h1 class="heading">Área Personal</h1>
+ 
+    <div class="box-container">
+ 
+       <div class="box">
+          <div class="thumb">
+             <img src="{{url_for('static', filename='img/contacto.png')}}" alt="">
+          </div>
+          <h3 class="title">Contacto</h3>
+       </div>
+ 
+       <div class="box">
+          <div class="thumb">
+             <img src="{{url_for('static', filename='img/gestionalumno.png')}}" alt="">
+          </div>
+          <h3 class="title">Gestión de alumno</h3>
+       </div>
+ 
+       <div class="box">
+          <div class="thumb">
+             <img src="{{url_for('static', filename='img/configuracion.png')}}" alt="">
+          </div>
+          <h3 class="title">Configuración</h3>
+       </div>
+ 
+       <div class="box">
+          <div class="thumb">
+             <img src="{{url_for('static', filename='img/gestionacademica.jpg')}}" alt="">
+          </div>
+          <h3 class="title">Gestión Académica</h3>
+       </div>
+ 
+       <div class="box">
+          <div class="thumb">
+             <img src="{{url_for('static', filename='img/plataformaexamenes.png')}}" alt="">
+          </div>
+          <h3 class="title">Plataforma Exámenes</h3>
+       </div>
+ 
+       <div class="box">
+          <div class="thumb">
+             <img src="{{url_for('static', filename='img/mensajeriaprivada.png')}}" alt="">
+          </div>
+          <h3 class="title">Mensajería Privada</h3>
+       </div>
+ 
+    </div>
+ 
+ </section>
+ 
+ <!-- Scripts  -->
+
+ <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+ 
+    
+ </body>
+ </html>
+
+{% endblock%}

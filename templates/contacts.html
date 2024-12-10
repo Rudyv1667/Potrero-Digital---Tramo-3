@@ -1,0 +1,70 @@
+{% extends "layout.html" %}  <!-- declaro de donde traigo la plantilla -->
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>EduLan - Contacts</title>
+    <!-- BOOTSTRAP 4 CDN -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+
+<body>
+ 
+ <section class="contact">
+
+<!-- Formulario -->
+ 
+    <div class="row">
+ 
+       <div class="image">
+          <img src="images/contact-img.svg" alt="">
+       </div>
+ 
+       <form class="form-container" method="post">
+          <h3>Contáctanos</h3>
+          <input type="text" placeholder="Ingrese su nombre" name="name" required maxlength="50" class="box">
+          <input type="email" placeholder="Ingrese su correo electrónico" name="email" required maxlength="50" class="box">
+          <input type="number" placeholder="Ingrese su número telefónico" name="number" required maxlength="50" class="box">
+          <textarea name="msg" class="box" placeholder="Ingrese el mensaje que nos quiera dejar" required maxlength="1000" cols="30" rows="10"></textarea>
+          <input type="submit" value="Enviar" class="inline-btn" name="submit">
+       </form>
+ 
+    </div>
+
+<!-- Información de contacto -->
+ 
+    <div class="box-container">
+ 
+       <div class="box">
+          <i class="fas fa-phone"></i>
+          <h3>Números de teléfono</h3>
+          <a href="tel:1234567890">123-456-7890</a>
+          <a href="tel:1112223333">111-222-3333</a>
+       </div>
+       
+       <div class="box">
+          <i class="fas fa-envelope"></i>
+          <h3>Direcciones de E-mail</h3>
+          <a href="mailto:shaikhanas@gmail.com">sasdasdas@gmail.come</a>
+          <a href="mailto:anasbhai@gmail.com">agluglugui@gmail.come</a>
+       </div>
+ 
+       <div class="box">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>Dirección de nuestro establecimiento</h3>
+          <a href="#">Caleta Olivia, Santa Cruz, Argentina - 9011</a>
+       </div>
+ 
+    </div>
+ 
+ </section>
+
+ <script src="js/main.js"></script>
+
+{% endblock%}

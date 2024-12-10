@@ -1,0 +1,43 @@
+{% extends "layout.html" %}  <!-- declaro de donde traigo la plantilla -->
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>update</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+      <section class="form-container">
+         <form action="" method="post" enctype="multipart/form-data">
+            <h3>Actualizar perfil</h3>
+            <p>Actualizar nombre</p>
+            <input type="text" name="name" placeholder="" maxlength="50" class="box">
+            <p>Actualizar correo electrónico</p>
+            <input type="email" name="email" placeholder="" maxlength="50" class="box">
+            <p>Contraseña actual</p>
+            <input type="password" name="old_pass" placeholder="Ingrese su contraseña actual" maxlength="20" class="box">
+            <p>Nueva contraseña</p>
+            <input type="password" name="new_pass" placeholder="Ingrese su contraseña nueva" maxlength="20" class="box">
+            <p>Confirmar nueva contraseña</p>
+            <input type="password" name="c_pass" placeholder="Confirme su contraseña nueva" maxlength="20" class="box">
+            <p>Actualizar foto de perfil</p>
+            <input type="file" accept="image/*" class="box">
+            <input type="submit" value="Actualizar perfil" name="submit" class="btn">
+         </form>
+      </section>
+   <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+</html>
+
+{% endblock%}

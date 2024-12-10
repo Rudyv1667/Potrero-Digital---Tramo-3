@@ -1,0 +1,23 @@
+﻿{% extends "layout.html" %}   <!-- declaro de donde traigo la plantilla -->
+
+{% block content %}
+  <head>
+    <meta charset="UTF-8">
+    <title>Cursos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <div class="courses">
+        <div class="card-deck" id="card-deck"></div>
+    </div>
+    <div class="more-btn">
+      <a href="" class="inline-option-btn" id="botonMaterias">Ver más cursos</a>
+    </div>
+  </body>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/maincursos.js')}}"></script>
+</html>
+
+
+{% endblock %}
